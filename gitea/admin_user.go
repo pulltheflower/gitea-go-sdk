@@ -98,12 +98,17 @@ func (c *Client) AdminEditUser(user string, opt EditUserOption) (*Response, erro
 }
 
 // AdminDeleteUser delete one user according name
-func (c *Client) AdminDeleteUser(user string) (*Response, error) {
+func (c *Client) AdminDeleteUser(user string, purge bool) (*Response, error) {
 	if err := escapeValidatePathSegments(&user); err != nil {
 		return nil, err
 	}
-	_, resp, err := c.getResponse("DELETE", fmt.Sprintf("/admin/users/%s", user), nil, nil)
-	return resp, err
+	if purge {
+		_, resp, err := c.getResponse("DELETE", fmt.Sprintf("/admin/users/%s?purge=true", user), nil, nil)
+		return resp, err
+	} else {
+		_, resp, err := c.getResponse("DELETE", fmt.Sprintf("/admin/users/%s", user), nil, nil)
+		return resp, err
+	}
 }
 
 // AdminCreateUserPublicKey adds a public key for the user

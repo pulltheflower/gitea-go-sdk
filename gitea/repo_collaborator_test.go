@@ -19,9 +19,9 @@ func TestRepoCollaborator(t *testing.T) {
 	createTestUser(t, "ping", c)
 	createTestUser(t, "pong", c)
 	defer func() {
-		_, err := c.AdminDeleteUser("ping")
+		_, err := c.AdminDeleteUser("ping", false)
 		assert.NoError(t, err)
-		_, err = c.AdminDeleteUser("pong")
+		_, err = c.AdminDeleteUser("pong", false)
 		assert.NoError(t, err)
 	}()
 

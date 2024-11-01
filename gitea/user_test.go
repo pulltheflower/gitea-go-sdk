@@ -40,7 +40,7 @@ func TestUserApp(t *testing.T) {
 	result, _, _ = c.ListAccessTokens(ListAccessTokensOptions{})
 	assert.Len(t, result, 2)
 
-	_, err = c.DeleteAccessToken(t1.ID)
+	_, err = c.DeleteAccessToken(DeleteAccessTokenOption{Value: t1.ID})
 	assert.NoError(t, err)
 	result, _, _ = c.ListAccessTokens(ListAccessTokensOptions{})
 	assert.Len(t, result, 1)

@@ -178,9 +178,9 @@ func TestPullReview(t *testing.T) {
 	assert.Len(t, rl, 3)
 
 	c.SetSudo("")
-	_, err = c.AdminDeleteUser(reviewer.UserName)
+	_, err = c.AdminDeleteUser(reviewer.UserName, false)
 	assert.NoError(t, err)
-	_, err = c.AdminDeleteUser(submitter.UserName)
+	_, err = c.AdminDeleteUser(submitter.UserName, false)
 	assert.NoError(t, err)
 }
 

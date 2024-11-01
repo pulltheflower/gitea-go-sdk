@@ -50,7 +50,7 @@ func TestIssueComment(t *testing.T) {
 	createOne(tUser2, 2, "second")
 	createOne(user, 2, "3")
 
-	_, err = c.AdminDeleteUser(tUser3.UserName)
+	_, err = c.AdminDeleteUser(tUser3.UserName, false)
 	assert.NoError(t, err)
 
 	// ListRepoIssueComments

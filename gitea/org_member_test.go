@@ -57,10 +57,10 @@ func TestOrgMembership(t *testing.T) {
 	assert.Error(t, err)
 
 	c.sudo = ""
-	_, err = c.AdminDeleteUser(user.UserName)
+	_, err = c.AdminDeleteUser(user.UserName, false)
 	assert.Error(t, err)
 	_, err = c.DeleteOrg(newOrg.UserName)
 	assert.NoError(t, err)
-	_, err = c.AdminDeleteUser(user.UserName)
+	_, err = c.AdminDeleteUser(user.UserName, false)
 	assert.NoError(t, err)
 }
